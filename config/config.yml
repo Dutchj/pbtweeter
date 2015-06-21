@@ -1,0 +1,41 @@
+# This file is where you configure the game, categories and behaviour of the bot.
+# How to use these settings:
+#
+# Game          - The game name, as displayed on speedrun.com.
+# Interval      - Time in minutes that the bot will wait before checking for PBs each time.
+# Data          - Relative path to the folder where the bot will save its PB library.
+# Categories    - List of categories the bot will tweet out, along with their
+#                 tresholds. Threshold format is hh:mm:ss. Set the treshold to
+#                 "WR" (without quotation marks) to only tweet out a new World Record
+#                 for that particular category.
+# PB Messages   - Format of the message that the bot will tweet for a PB. The
+#                 markers {game}, {player}, {time} and {category} will be replaced
+#                 with the correct information by the bot. If multiple messages
+#                 are specified (each delimited by a dash), the bot will choose
+#                 one at random.
+# WR Messages   - Same as PB Messages, but only used when a new world record is set.
+# Tie Messages  - Same as PB and WR Messages, but only used when someone ties
+#                 the current world record.
+---
+# These values serve as a valid example, if you run the bot with these settings
+# it will attempt to tweet PBs of Super Mario Sunshine
+
+Game      : Super Mario Sunshine
+Interval  : 15
+Data      : /data/
+
+Categories:
+  Any%        : 01:30:00
+  79 Shines   : 02:45:00
+  96 Shines   : 03:00:00
+  120 Shines  : 03:40:00
+
+PB Messages:
+  - 'Congratulations to {player} for getting a {time} in {category}!'
+
+WR Messages:
+  - 'A new World Record has been set for {category}! {time} by {player}!'
+
+Tie Messages:
+  - 'The world record ({time}) for {category} has been tied by {player}!'
+...
