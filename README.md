@@ -1,4 +1,4 @@
-# pbtweeter
+# PB Tweeter
 This is fairly simple commandline bot that will read leaderboard information from speedrun.com, and tweet out new PBs at a set interval.
 
 I'll add more detailed information on how to set it up later, but the important points are as follows:
