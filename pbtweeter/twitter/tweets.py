@@ -23,7 +23,8 @@ def post_tweet(api, lb, cat, p, t):
 
 def post_pb_tweet(api, cat, p, t):
     try:
-        api.update_status(status=random.choice(cfg.pb_messages).format(game=cfg.game, category=cat, player=p, time=t))
+        api.update_status(status=random.choice(cfg.pb_messages).format(game=cfg.game, category=cat, player=p,
+                                                                       time=seconds_to_time(t)))
     except Exception,e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), e
     else:
@@ -34,7 +35,8 @@ def post_pb_tweet(api, cat, p, t):
 
 def post_wr_tweet(api, cat, p, t):
     try:
-        api.update_status(status=random.choice(cfg.wr_messages).format(game=cfg.game, category=cat, player=p, time=t))
+        api.update_status(status=random.choice(cfg.wr_messages).format(game=cfg.game, category=cat, player=p,
+                                                                       time=seconds_to_time(t)))
     except Exception,e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), e
     else:
@@ -45,7 +47,8 @@ def post_wr_tweet(api, cat, p, t):
 
 def post_tie_tweet(api, cat, p, t):
     try:
-        api.update_status(status=random.choice(cfg.tie_messages).format(game=cfg.game, category=cat, player=p, time=t))
+        api.update_status(status=random.choice(cfg.tie_messages).format(game=cfg.game, category=cat, player=p,
+                                                                        time=seconds_to_time(t)))
     except Exception,e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), e
     else:

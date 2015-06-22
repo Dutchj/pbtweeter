@@ -40,4 +40,4 @@ def get_twitter_handle(user):
             twitter_link = next((link['uri'] for link in user_data['data']['links'] if link['rel'] == 'twitter'), None)
             if twitter_link is None:
                 return ''
-            return twitter_link.replace('http://www.twitter.com/', '').replace('%40', '')
+            return '@' + twitter_link.replace('http://www.twitter.com/', '').replace('%40', '')
