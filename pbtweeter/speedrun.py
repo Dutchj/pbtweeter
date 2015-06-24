@@ -6,20 +6,20 @@ from datetime import datetime
 def get_lb():
     try:
         response = urlopen('http://www.speedrun.com/api_records.php?amount=999&game='+quote(cfg.game))
+        return json.load(response)
     except Exception, e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), 'Error getting leaderboard data:', e
         return
-    else:
-        return json.load(response)
+
 
 def get_twitter_handle(user):
     try:
         response = urlopen('http://www.speedrun.com/api/v1/users?max=200&name='+user)
+        users = json.load(response)
     except Exception, e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), 'Error getting user search:', e
         return
     else:
-        users = json.load(response)
         if users['data'] is []:
             print "Unable to retrieve Twitter handle: No data, user most likely doesn't exist"
             return ''

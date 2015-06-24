@@ -26,23 +26,26 @@ def start(api):
         log('Starting tweet cycle...')
         log('Getting leaderboard data...')
         new = speedrun.get_lb()
-        old = lbdata.read_old()
-        log('Finding new times...')
-        times = lbdata.get_times(old,new)
-        if times is None:
-            log('No new times.')
+        if new is None:
+            print 'Leaderboards could not be retrieved'
         else:
-            update_old = True
-            tweeted = lbdata.load_data()
-            for category, runs in times.iteritems():
-                for player, time in runs.iteritems():
-                    if player not in tweeted[category].keys() or time < tweeted[category][player]:
-                        if tweets.post_tweet(api, new, category, player, time):
-                            lbdata.update_data(tweeted, category, (player,time))
-                        else:
-                            update_old = False
-            if update_old:
-                lbdata.write_old(new)
+            old = lbdata.read_old()
+            log('Finding new times...')
+            times = lbdata.get_times(old,new)
+            if times is None:
+                log('No new times.')
+            else:
+                update_old = True
+                tweeted = lbdata.load_data()
+                for category, runs in times.iteritems():
+                    for player, time in runs.iteritems():
+                        if player not in tweeted[category].keys() or time < tweeted[category][player]:
+                            if tweets.post_tweet(api, new, category, player, time):
+                                lbdata.update_data(tweeted, category, (player,time))
+                            else:
+                                update_old = False
+                if update_old:
+                    lbdata.write_old(new)
 
         log('Cycle complete, sleeping until next cycle...')
         time_left = interval - (int(t.time()) - start_time)
