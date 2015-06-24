@@ -32,7 +32,6 @@ def start(api):
         if times is None:
             log('No new times.')
         else:
-            print times
             update_old = True
             tweeted = lbdata.load_data()
             for category, runs in times.iteritems():
