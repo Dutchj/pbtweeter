@@ -5,9 +5,7 @@
 # Interval      - Time in minutes that the bot will wait before checking for PBs each time.
 # Data          - Relative path to the folder where the bot will save its PB library.
 # Categories    - List of categories the bot will tweet out, along with their
-#                 tresholds. Threshold format is hh:mm:ss. Set the treshold to
-#                 "WR" (without quotation marks) to only tweet out a new World Record
-#                 for that particular category.
+#                 tresholds. Threshold format is hh:mm:ss.
 # PB Messages   - Format of the message that the bot will tweet for a PB. The
 #                 markers {game}, {player}, {time} and {category} will be replaced
 #                 with the correct information by the bot. If multiple messages
@@ -32,9 +30,11 @@ Categories:
 
 PB Messages:
   - 'Congratulations to {player} for getting a {time} in {category}!'
+  - '.{player} just got a {time} in {game} {category}!'
 
 WR Messages:
   - 'A new World Record has been set for {category}! {time} by {player}!'
+  - 'WR Hype! {player} got a {time} for {game} {category}!'
 
 Tie Messages:
   - 'The world record ({time}) for {category} has been tied by {player}!'
