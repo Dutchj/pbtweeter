@@ -40,7 +40,7 @@ def start(api):
                 for category, runs in times.iteritems():
                     for player, time in runs.iteritems():
                         if player not in tweeted[category].keys() or time < tweeted[category][player]:
-                            if tweets.post_tweet(api, new, category, player, time):
+                            if tweets.post_tweet(api, old, category, player, time):
                                 lbdata.update_data(tweeted, category, (player,time))
                             else:
                                 update_old = False
