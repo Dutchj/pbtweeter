@@ -37,7 +37,7 @@ def get_twitter_handle(user):
             return
         else:
             user_data = json.load(response)
-            twitter_link = next((link['uri'] for link in user_data['data']['links'] if link['rel'] == 'twitter'), None)
-            if twitter_link is None:
+            if user_data['data']['twitter'] is None:
                 return ''
+            twitter_link = user_data['data']['twitter']['uri']
             return '@' + twitter_link.replace('http://www.twitter.com/', '').replace('%40', '')
