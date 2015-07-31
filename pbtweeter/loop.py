@@ -1,8 +1,9 @@
-import speedrun, lbdata
 import config as cfg
-import twitter.tweets as tweets
-import time as t
+import lbdata
 import os
+import speedrun
+import time as t
+import twitter.tweets as tweets
 from datetime import datetime
 
 
@@ -28,11 +29,11 @@ def start(api):
         log('Getting leaderboard data...')
         new = speedrun.get_lb()
         if new is None:
-            print 'Leaderboards could not be retrieved'
+            log('Leaderboards could not be retrieved')
         else:
             old = lbdata.read_old()
             log('Finding new times...')
-            times = lbdata.get_times(old,new)
+            times = lbdata.get_times(old, new)
             if times is None:
                 log('No new times.')
             else:
@@ -42,7 +43,7 @@ def start(api):
                     for player, time in runs.iteritems():
                         if player not in tweeted[category].keys() or time < tweeted[category][player]:
                             if tweets.post_tweet(api, old, category, player, time):
-                                lbdata.update_data(tweeted, category, (player,time))
+                                lbdata.update_data(tweeted, category, (player, time))
                             else:
                                 update_old = False
                 if update_old:

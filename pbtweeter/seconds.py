@@ -9,9 +9,10 @@ def time_to_seconds(time):
         h = int(times.pop(-1))*3600
     return h+m+s
 
+
 def seconds_to_time(sec):
-    h = divmod(sec,3600)
-    m = divmod(h[1],60)
+    h = divmod(sec, 3600)
+    m = divmod(h[1], 60)
     s = m[1]
 
     if sec < 60:

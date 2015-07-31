@@ -1,6 +1,5 @@
 import tweepy
 import yaml
-from tweepy import TweepError
 
 
 def authenticate(auth):
@@ -18,14 +17,14 @@ def authenticate(auth):
     elif file_load.lower() in ['n', 'no']:
         try:
             redirect_url = auth.get_authorization_url()
-        except TweepError:
+        except tweepy.TweepError:
             print 'Error! Failed to get request token.'
             return
         print 'Go to {}, authorize the application and retrieve the verification code'.format(redirect_url)
         verifier = raw_input('Input your verification code:')
         try:
             auth.get_access_token(verifier)
-        except TweepError:
+        except tweepy.TweepError:
             print 'Error! Failed to get access token.'
             return
         write = None

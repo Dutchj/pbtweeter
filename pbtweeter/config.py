@@ -1,5 +1,5 @@
-import yaml
 import os
+import yaml
 
 if not os.path.exists('../config/'):
         os.mkdir('../config/')

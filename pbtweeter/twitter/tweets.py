@@ -1,8 +1,8 @@
 import config as cfg
-import speedrun
-from seconds import seconds_to_time
-from datetime import datetime
 import random
+import speedrun
+from datetime import datetime
+from seconds import seconds_to_time
 
 
 def post_tweet(api, lb, cat, p, t):
@@ -26,7 +26,7 @@ def post_pb_tweet(api, cat, p, t):
         if not cfg.debug:
             api.update_status(status=random.choice(cfg.pb_messages).format(game=cfg.game, category=cat, player=p,
                                                                            time=seconds_to_time(t)))
-    except Exception,e:
+    except Exception, e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), e
     else:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), "Tweeted out {player}'s PB ({time}) in {category}".format(
@@ -41,7 +41,7 @@ def post_wr_tweet(api, cat, p, t):
         if not cfg.debug:
             api.update_status(status=random.choice(cfg.wr_messages).format(game=cfg.game, category=cat, player=p,
                                                                            time=seconds_to_time(t)))
-    except Exception,e:
+    except Exception, e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), e
     else:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), "Tweeted out {player}'s WR ({time}) in {category}".format(
@@ -56,11 +56,11 @@ def post_tie_tweet(api, cat, p, t):
         if not cfg.debug:
             api.update_status(status=random.choice(cfg.tie_messages).format(game=cfg.game, category=cat, player=p,
                                                                             time=seconds_to_time(t)))
-    except Exception,e:
+    except Exception, e:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), e
     else:
         print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), "Tweeted out {player}'s WR tie ({time}) in {category}"\
-                                      .format( player=p, time=seconds_to_time(t), category=cat)
+            .format(player=p, time=seconds_to_time(t), category=cat)
         if cfg.debug:
             return False
         return True

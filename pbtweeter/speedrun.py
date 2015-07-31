@@ -1,7 +1,8 @@
-from urllib2 import urlopen, quote
 import config as cfg
 import json
 from datetime import datetime
+from urllib2 import urlopen, quote
+
 
 def get_lb():
     try:
