@@ -8,6 +8,7 @@ if not os.path.isfile('../config/config.yml'):
         'Game': 'The Legend of Zelda: Ocarina of Time',
         'Interval': 60,
         'Data': '/data/',
+        'Debug': False,
 
         'Categories': {'Any%': '20:00', '100%': '5:00:00'},
 
@@ -32,6 +33,7 @@ else:
     game = settings['Game']
     interval = settings['Interval']
     data_path = settings['Data']
+    debug = settings['Debug']
     categories = settings['Categories']
     pb_messages = settings['PB Messages']
     wr_messages = settings['WR Messages']

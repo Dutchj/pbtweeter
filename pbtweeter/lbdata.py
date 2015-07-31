@@ -1,4 +1,5 @@
 import config as cfg
+from datetime import datetime
 import yaml
 from seconds import time_to_seconds
 
@@ -42,6 +43,8 @@ def get_times(old, new):
                          player not in old_times[category].keys() or
                          old_times[category][player] > time) and
                          time < time_to_seconds(cfg.categories[category])}
+    if res and cfg.debug:
+        print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'),"New times:", res
     return res
 
 

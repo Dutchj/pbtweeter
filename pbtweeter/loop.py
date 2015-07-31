@@ -9,6 +9,7 @@ from datetime import datetime
 def log(msg):
     print datetime.now().strftime('[%Y-%m-%d %H:%M:%S]'), msg
 
+
 def start(api):
     interval = int(cfg.interval)*60
     if not os.path.exists('..{path}'.format(path=cfg.data_path)):
